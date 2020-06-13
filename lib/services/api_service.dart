@@ -12,4 +12,18 @@ class APIService {
 
   final String _baseUrl = 'www.googleapis.com';
   String _nextPageToken = '';
+
+  Future<Channel> fetchChannel({String channelId}) async {
+    Map<String, String> parameters = {
+      'part': 'snippet, contentDetails, statistics',
+      'id': channelId,
+      'key': API_KEY,
+    };
+
+    Uri uri = Uri.https(
+      _baseUrl,
+      '/youtube/v3/channels',
+      parameters,
+    );
+  }
 }
